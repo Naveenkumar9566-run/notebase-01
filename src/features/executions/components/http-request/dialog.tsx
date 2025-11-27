@@ -41,31 +41,27 @@ import { Button } from "@/components/ui/button";
    // .refine()  TODO JSON
  });
 
- export type FormType = z.infer<typeof formSchema>;
+ export type HttpRequestFormValues = z.infer<typeof formSchema>;
 
  interface Props {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onsubmit: (value: z.infer<typeof formSchema>) => void;
-  defaultEndpoint?: string;
-  defaultMethod?: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
-  defaultBody?: string;
+  defaultValues?: Partial<HttpRequestFormValues>;
  };
 
  export const HttpRequestDialog = ({
   open,
   onOpenChange,
   onsubmit,
-  defaultEndpoint= "",
-  defaultMethod ="GET",
-  defaultBody = "",
+  defaultValues = {},
  }: Props) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      endpoint: defaultEndpoint,
-      method: defaultMethod,
-      body: defaultBody,
+      endpoint: defaultValues.endpoint || "",
+      method: defaultValues.method || "GET",
+      body: defaultValues.body || "",
     },
   });
 
@@ -73,12 +69,12 @@ import { Button } from "@/components/ui/button";
   useEffect(() => {
     if(open) {
      form.reset({
-       endpoint: defaultEndpoint,
-       method: defaultMethod,
-       body: defaultBody,
+       endpoint: defaultValues.endpoint || "",
+      method: defaultValues.method || "GET",
+      body: defaultValues.body || "",
      });
     }
-  }, [open, defaultEndpoint, defaultMethod, defaultBody, form])
+  }, [open, defaultValues, form])
 
   const WatchMethod = form.watch("method");
   const showBodyField = ["POST", "PUT", "PATCH"].includes
