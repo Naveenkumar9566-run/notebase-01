@@ -124,7 +124,7 @@ import { Button } from "@/components/ui/button";
                 <FormDescription>
                   Use this name to reference the result in 
                   other nodes: {" "}
-                  {`{{${watchVariableName}.httResponse.data}}`}
+                  {`{{${watchVariableName}.httpResponse.data}}`}
                 </FormDescription>
                 <FormMessage />
               </FormItem>
