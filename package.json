@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "ngrok:dev": "dotenv ngrok http --url=$NGROK_URL 3000",
     "inngest:dev": "inngest-cli dev",
-    "dev:all": "mprocs"
+    "dev:all": "dotenv -- mprocs"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^2.0.41",
@@ -69,6 +70,7 @@
     "lucide-react": "^0.552.0",
     "next": "16.0.1",
     "next-themes": "^0.4.6",
+    "ngrok": "^5.0.0-beta.2",
     "nuqs": "^2.7.3",
     "random-word-slugs": "^0.1.7",
     "react": "19.2.0",
@@ -92,6 +94,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/toposort": "^2.0.7",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
     "inngest-cli": "^1.13.2",

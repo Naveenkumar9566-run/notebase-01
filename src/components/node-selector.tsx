@@ -33,6 +33,12 @@ import {
     description: "Run the flow on clicking aa button. Good for getting started quickly",
     icon: MousePointerIcon,
   },
+   {
+    type: NodeType.GOOGLE_FORM_TRIGGER,
+    label: "Google Form",
+    description: "Run the flow when a Google Form is submitted",
+    icon: "/logos/googleform.svg",
+  },
  ];
 
  const executionNodes: NodeTypeOption[] = [ 
